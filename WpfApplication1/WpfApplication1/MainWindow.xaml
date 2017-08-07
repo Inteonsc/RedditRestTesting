@@ -1,0 +1,10 @@
+﻿<Window x:Class="WpfApplication1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="694" Width="1089">
+    <Grid>
+        <Image x:Name="Meme" HorizontalAlignment="Left" Height="542" Margin="43,74,0,0" VerticalAlignment="Top" Width="934"/>
+        <TextBlock x:Name="Title" HorizontalAlignment="Left" Height="36" Margin="117,10,0,0" TextWrapping="Wrap" Text="Most recent &quot;Obi&quot; meme  " VerticalAlignment="Top" Width="299" FontSize="22"/>
+
+    </Grid>
+</Window>
