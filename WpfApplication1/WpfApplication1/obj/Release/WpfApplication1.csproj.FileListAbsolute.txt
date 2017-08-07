@@ -12,3 +12,4 @@ C:\Users\liam j\coding\visual studio\reddit rest\WpfApplication1\WpfApplication1
 C:\Users\liam j\coding\visual studio\reddit rest\WpfApplication1\WpfApplication1\obj\Release\WpfApplication1.csproj.GenerateResource.Cache
 C:\Users\liam j\coding\visual studio\reddit rest\WpfApplication1\WpfApplication1\obj\Release\WpfApplication1.exe
 C:\Users\liam j\coding\visual studio\reddit rest\WpfApplication1\WpfApplication1\obj\Release\WpfApplication1.pdb
+C:\Users\liam j\coding\visual studio\reddit rest\WpfApplication1\WpfApplication1\obj\Release\WpfApplication1.csprojResolveAssemblyReference.cache
