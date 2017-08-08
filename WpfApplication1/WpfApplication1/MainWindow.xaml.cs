@@ -18,7 +18,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 namespace WpfApplication1 {
     
-    // using Json.net 9.0.1 because newer versions do not work iwth VS 2012/2013 ----- https://stackoverflow.com/questions/44532170/newtonsoft-json-already-has-a-dependency-defined-for-microsoft-csharp
+    // using Json.net 9.0.1 because newer versions do not work with VS 2012/2013 ----- https://stackoverflow.com/questions/44532170/newtonsoft-json-already-has-a-dependency-defined-for-microsoft-csharp
 
     public partial class MainWindow : Window {
 
@@ -31,15 +31,14 @@ namespace WpfApplication1 {
         public MainWindow() {
             InitializeComponent();
 
-
-            
-            Meme.Source = StartSearchBitmapImage() ;
+            Meme.Source = StartSearchBitmapImage();
 
         }
 
 
-
+        //"selftext_html" --- null if image. if not null its a text post. get text from "selftext".
         public BitmapImage StartSearchBitmapImage(){
+
             WebClient client = new WebClient();
 
             // Get Json from the reddit api.
