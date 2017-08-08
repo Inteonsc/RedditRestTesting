@@ -31,30 +31,17 @@ namespace WpfApplication1 {
         public MainWindow() {
             InitializeComponent();
 
-            Meme.Source = StartSearchBitmapImage();
 
+            DataSorter.DataRetriever datagetter = new DataSorter.DataRetriever(String.Format("https://www.reddit.com/r/{0}/search.json?q={1}&sort={2}&restrict_sr=on&limit={3}", SearchSubReddit, SearchTitle, SearchSort, SearchAmount));
+            dynamic memedata = datagetter.RetreieveData();
+            if (memedata.GetType() == typeof(BitmapImage)) {
+                Meme.Source = memedata;
+            }
+           
         }
 
 
         //"selftext_html" --- null if image. if not null its a text post. get text from "selftext".
-        public BitmapImage StartSearchBitmapImage(){
-
-            WebClient client = new WebClient();
-
-            // Get Json from the reddit api.
-            string result = client.DownloadString(String.Format("https://www.reddit.com/r/{0}/search.json?q={1}&sort={2}&restrict_sr=on&limit={3}", SearchSubReddit, SearchTitle, SearchSort, SearchAmount));
-            var jsonresult = JObject.Parse(result);
-
-
-            // Get the source URL from the Json.
-            var jsonurl = jsonresult["data"]["children"][0]["data"]["url"];
-            Console.WriteLine(jsonurl.ToString());
-            
-
-            // Get the image from the URL.
-            Uri uristring = new Uri(jsonurl.ToString());
-            return new BitmapImage(uristring);
-
-        }
+       
     }
 }
