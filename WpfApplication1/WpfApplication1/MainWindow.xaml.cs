@@ -22,18 +22,30 @@ namespace WpfApplication1 {
 
     public partial class MainWindow : Window {
 
-        // Filters for memes to find.
-        public string SearchSubReddit = "prequelmemes"; // only prequel memes at the moment but can expand to more later on.
-        public string SearchTitle = "Obi"; //defaults to Obi memes
-        public string SearchSort = "new"; //defaults to the newest memes
-        public int SearchAmount = 5; // not used yet but will be used once the Application can display multiple results. Defaults to 5 so it will get the five newest and display the newest one out of them.
+        /*************************************************************
+        Filter variables.
+        *************************************************************/
+
+        public string SearchSubReddit = "prequelmemes"; // Only prequel memes at the moment but can expand to more later on.
+        public string SearchTitle = "Obi"; //Defaults to Obi memes.
+        public string SearchSort = "new"; //Defaults to the newest memes.
+        public int SearchAmount = 5; //Not used yet but will be used once the Application can display multiple results. Defaults to 5 so it will get the five newest and display the newest one out of them.
+
+
+
+        /*************************************************************
+        Main method to display results.
+        *************************************************************/
+
 
         public MainWindow() {
             InitializeComponent();
 
-
+            //Get the post from reddit.
             DataSorter.DataRetriever datagetter = new DataSorter.DataRetriever(String.Format("https://www.reddit.com/r/{0}/search.json?q={1}&sort={2}&restrict_sr=on&limit={3}", SearchSubReddit, SearchTitle, SearchSort, SearchAmount));
             dynamic memedata = datagetter.RetreieveData();
+
+            //If the post is an image display it.
             if (memedata.GetType() == typeof(BitmapImage)) {
                 Meme.Source = memedata;
             }
@@ -41,7 +53,7 @@ namespace WpfApplication1 {
         }
 
 
-        //"selftext_html" --- null if image. if not null its a text post. get text from "selftext".
+       
        
     }
 }

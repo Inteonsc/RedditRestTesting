@@ -15,8 +15,10 @@ namespace DataSorter {
     public class DataRetriever {
 
         string _RequestString {get; set;}
-        
 
+        /*************************************************************
+        Constructor.
+        *************************************************************/
 
         public DataRetriever(string requeststring) {
 
@@ -25,6 +27,9 @@ namespace DataSorter {
 
         }
 
+        /*************************************************************
+        Main call method for getting data of various types.
+        *************************************************************/
 
         public dynamic RetreieveData() {
             WebClient client = new WebClient();
@@ -33,6 +38,9 @@ namespace DataSorter {
             string result = client.DownloadString(_RequestString);
             var jsonresult = JObject.Parse(result);
 
+
+
+            //Checks what type of post it is.
             bool textpost = false;
 
             if (jsonresult["data"]["children"][0]["data"]["selftext"] != null && jsonresult["data"]["children"][0]["data"]["selftext"].ToString() != "") {
@@ -40,6 +48,8 @@ namespace DataSorter {
                 Console.WriteLine(jsonresult["data"]["children"][0]["data"]["selftext_html"]);
             }
 
+            //Call the relevant method.
+            
             if (textpost == true) {
                 return GetSelfTextData(jsonresult);
             }
@@ -51,8 +61,10 @@ namespace DataSorter {
         }
 
 
-
-        public BitmapImage GetBitmapImage(JObject data) {
+        /*************************************************************
+         Methods used to get posts of a certain type.
+        *************************************************************/
+        private BitmapImage GetBitmapImage(JObject data) {
 
             
 
@@ -70,9 +82,9 @@ namespace DataSorter {
         }
 
 
-        public String GetSelfTextData(JObject data) {
+        private String GetSelfTextData(JObject data) {
 
-            // Get the Text data from the Reddit post
+            // Get the Text data from the Reddit post.
             return data["data"]["children"][0]["data"]["selftext"].ToString() ;
             
 
@@ -81,7 +93,9 @@ namespace DataSorter {
         }
 
 
-        // getters and setters for private values;
+        /*************************************************************
+        Getters and setters.
+        *************************************************************/
         public void SetRequestString(string value){
             _RequestString = value;
         }
